@@ -9,11 +9,11 @@ library(assertthat)
 library(huxtable)
 library(pharmaRTF)
 
-source('./programs/config.R')
-source('./programs/funcs.R')
+source('/mnt/code/programs/config.R')
+source('/mnt/code/programs/funcs.R')
 
 # Read in the datasets
-adsl <- read_xpt(glue("{adam_lib}/adsl.xpt")) %>%
+adsl <- read_xpt(glue("/mnt/data/Clinical_Study_1_ADaM/adsl.xpt")) %>%
   filter(ITTFL == "Y")
 
 adsl$SITEGR1 <- ordered(adsl$SITEGR1, c(
@@ -186,5 +186,5 @@ doc <- rtf_doc(ht, header_rows = 2) %>% titles_and_footnotes_from_df(
   set_ignore_cell_padding(TRUE) %>%
   set_column_header_buffer(top = 1)
 
-write_rtf(doc, file='./outputs/14-1.03.rtf')
+write_rtf(doc, file='/mnt/artifacts/outputs/14-1.03.rtf')
 

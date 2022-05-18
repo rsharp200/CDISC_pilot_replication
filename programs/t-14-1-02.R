@@ -7,8 +7,8 @@ library(haven)
 library(assertthat)
 library(pharmaRTF)
 
-source('./programs/config.R')
-source('./programs/funcs.R')
+source('/mnt/code/programs/config.R')
+source('/mnt/code/programs/funcs.R')
 
 #Read in Source and order factors
 adsl <- read_xpt(glue("/mnt/data/Clinical_Study_1_ADaM/adsl.xpt"))
