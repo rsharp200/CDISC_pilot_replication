@@ -8,11 +8,11 @@ library(assertthat)
 library(huxtable)
 library(pharmaRTF)
 
-source('./programs/config.R')
-source('./programs/funcs.R')
+source('./mnt/code/config.R')
+source('./mnt/code/funcs.R')
 
 # Read in the ADLB datasets
-adsl <- read_xpt(glue("{adam_lib}/adsl.xpt"))
+adsl <- read_xpt(glue("/mnt/data/Clincal_Study_1_ADaM/adsl.xpt"))
 
 # Create the total values upfront for quicker summary ----
 adsl_ <- adsl %>%
@@ -75,7 +75,7 @@ ht <- as_hux(final, add_colnames = FALSE) %>%
 
 # Write into doc object and pull titles/footnotes from excel file
 doc <- rtf_doc(ht) %>% titles_and_footnotes_from_df(
-  from.file='./data/titles.xlsx',
+  from.file='./mnt/code/data/titles.xlsx',
   reader=example_custom_reader,
   table_number='14-1.01') %>%
   set_font_size(10) %>%
@@ -83,4 +83,4 @@ doc <- rtf_doc(ht) %>% titles_and_footnotes_from_df(
   set_column_header_buffer(top=1)
 
 # Write out the RTF
-write_rtf(doc, file='./outputs/14-1.01.rtf')
+write_rtf(doc, file='./mnt/artifacts/outputs/14-1.01.rtf')
