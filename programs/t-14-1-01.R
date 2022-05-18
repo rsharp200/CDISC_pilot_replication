@@ -12,7 +12,7 @@ source('/mnt/code/programs/config.R')
 source('/mnt/code/programs/funcs.R')
 
 # Read in the ADLB datasets
-adsl <- read_xpt(glue("/mnt/data/Clincal_Study_1_ADaM/adsl.xpt"))
+adsl <- read_xpt(glue("/mnt/data/Clinical_Study_1_ADaM/adsl.xpt"))
 
 # Create the total values upfront for quicker summary ----
 adsl_ <- adsl %>%
