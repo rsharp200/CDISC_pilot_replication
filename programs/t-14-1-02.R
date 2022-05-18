@@ -11,7 +11,7 @@ source('./programs/config.R')
 source('./programs/funcs.R')
 
 #Read in Source and order factors
-adsl <- read_xpt(glue("{adam_lib}/adsl.xpt"))
+adsl <- read_xpt(glue("/mnt/data/Clinical_Study_1_ADaM/adsl.xpt"))
 adsl$COMP24FL <- ordered(adsl$COMP24FL, c("Y", "N", NA))
 adsl$ARM <- ordered(adsl$ARM, c("Placebo", "Xanomeline Low Dose", "Xanomeline High Dose"))
 adsl$DCREASCD <- ordered(adsl$DCSREAS, c("Adverse Event",
@@ -144,7 +144,7 @@ ht <- huxtable::merge_cells(ht, 8, 1:2)
 
 # Write into doc object and pull titles/footnotes from excel file
 doc <- rtf_doc(ht) %>% titles_and_footnotes_from_df(
-  from.file='./data/titles.xlsx',
+  from.file='/mnt/code/data/titles.xlsx',
   reader=example_custom_reader,
   table_number='14-1.02') %>%
   set_font_size(10) %>%
@@ -152,5 +152,5 @@ doc <- rtf_doc(ht) %>% titles_and_footnotes_from_df(
   set_column_header_buffer(top = 1)
 
 # Write out the RTF
-write_rtf(doc, file='./outputs/14-1.02.rtf')
+write_rtf(doc, file='/mnt/artifacts/outputs/14-1.02.rtf')
 
