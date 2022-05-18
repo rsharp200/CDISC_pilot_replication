@@ -8,8 +8,8 @@ library(assertthat)
 library(pharmaRTF)
 library(tibble)
 
-source('./programs/config.R')
-source('./programs/funcs.R')
+source('/mnt/code/programs/config.R')
+source('/mnt/code/programs/funcs.R')
 
 ## Modified n_pct function
 n_pct <- function(n, pct) {
@@ -24,8 +24,8 @@ n_pct <- function(n, pct) {
 }
 
 
-cm <- read_xpt(glue("{sdtm_lib}/cm.xpt"))
-adsl <- read_xpt(glue("{adam_lib}/adsl.xpt"))
+cm <- read_xpt(glue("/mnt/imported/data/snapshots/Clinical_Study_1_SDTM/1/cm.xpt")) ##using snapshot one of the mounted, read-only SDTM dataset
+adsl <- read_xpt(glue("/mnt/data/Clinical_Study_1_ADaM/adsl.xpt"))
 adsl$ARM <- ordered(adsl$ARM, c("Placebo", "Xanomeline Low Dose", "Xanomeline High Dose"))
 
 ## Patients receiving at least one medication
@@ -131,5 +131,5 @@ doc <- rtf_doc(ht) %>% titles_and_footnotes_from_df(
   set_column_header_buffer(1,0) %>%
   set_footer_height(1)
 
-write_rtf(doc, file='./outputs/14-7.04.rtf')
+write_rtf(doc, file='/mnt/artifacts/outputs/14-7.04.rtf')
 
