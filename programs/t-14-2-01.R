@@ -7,11 +7,11 @@ library(haven)
 library(assertthat)
 library(pharmaRTF)
 
-source('./programs/config.R')
-source('./programs/funcs.R')
+source('/mnt/code/programs/config.R')
+source('/mnt/code//programs/funcs.R')
 
 # Import and explore the data frame ----
-adsl <- read_xpt(glue("{adam_lib}/adsl.xpt")) %>%
+adsl <- read_xpt(glue("/mnt/data/Clinical_Study_1_ADaM/adsl.xpt")) %>%
   filter(ITTFL == "Y") %>%
   mutate(
     RACE_DISPLAY = case_when(
@@ -226,7 +226,7 @@ huxtable::top_padding(ht) <- 0
 
 # Write into doc object and pull titles/footnotes from excel file
 doc <- rtf_doc(ht) %>% titles_and_footnotes_from_df(
-  from.file='./data/titles.xlsx',
+  from.file='/mnt/code/data/titles.xlsx',
   reader=example_custom_reader,
   table_number='14-2.01') %>%
   set_font_size(10) %>%
@@ -234,4 +234,4 @@ doc <- rtf_doc(ht) %>% titles_and_footnotes_from_df(
   set_column_header_buffer(top=1)
 
 # Write out the RTF
-write_rtf(doc, file='./outputs/14-2.01.rtf')
+write_rtf(doc, file='/mnt/artifacts/outputs/14-2.01.rtf')
