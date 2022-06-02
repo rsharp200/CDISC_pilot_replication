@@ -24,7 +24,7 @@ n_pct <- function(n, pct) {
 }
 
 
-cm <- read_xpt(glue("/mnt/imported/data/snapshots/Clinical_Study_1_SDTM/1/cm.xpt")) ##using snapshot one of the mounted, read-only SDTM dataset
+cm <- read_xpt(glue("/mnt/imported/data/snapshots/Clinical_Study_1_SDTM_Data/1/cm.xpt")) ##using snapshot one of the mounted, read-only SDTM dataset
 adsl <- read_xpt(glue("/mnt/data/snapshots/Clinical_Study_1_ADaM/1/adsl.xpt"))
 adsl$ARM <- ordered(adsl$ARM, c("Placebo", "Xanomeline Low Dose", "Xanomeline High Dose"))
 
